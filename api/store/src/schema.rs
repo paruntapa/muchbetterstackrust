@@ -25,8 +25,8 @@ diesel::table! {
     website (id) {
         id -> Text,
         url -> Text,
-        timeAdded -> Timestamp,
-        userId -> Nullable<Text>,
+        time_added -> Timestamp,
+        user_id -> Text,
     }
 }
 
@@ -44,7 +44,7 @@ diesel::table! {
     }
 }
 
-diesel::joinable!(website -> user (userId));
+diesel::joinable!(website -> user (user_id));
 diesel::joinable!(website_tick -> region (region_Id));
 diesel::joinable!(website_tick -> website (website_Id));
 

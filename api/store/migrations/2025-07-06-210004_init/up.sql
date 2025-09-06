@@ -5,7 +5,7 @@ CREATE TYPE "website_status" AS ENUM ('UP', 'DOWN', 'UNKNOWN');
 CREATE TABLE "website" (
     "id" TEXT NOT NULL,
     "url" TEXT NOT NULL,
-    "timeAdded" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "time_added" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Website_pkey" PRIMARY KEY ("id")
 );

@@ -1,5 +1,5 @@
 -- AlterTable
-ALTER TABLE "website" ADD COLUMN     "userId" TEXT;
+ALTER TABLE "website" ADD COLUMN     "user_id" TEXT;
 
 -- AlterTable
 ALTER TABLE "website_tick" ADD COLUMN     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;
@@ -14,4 +14,4 @@ CREATE TABLE "user" (
 );
 
 -- AddForeignKey
-ALTER TABLE "website" ADD CONSTRAINT "website_userId_fkey" FOREIGN KEY ("userId") REFERENCES "user"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "website" ADD CONSTRAINT "website_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE SET NULL ON UPDATE CASCADE;
