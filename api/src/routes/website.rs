@@ -11,19 +11,23 @@ use crate::request_outputs::{CreateWebsiteOutput, GetWebsiteOutput};
 
 
 #[handler]
-pub fn get_website(Path(id): Path<String>, Data(s): Data<&Arc<Mutex<Store>>>) -> Json<GetWebsiteOutput>{
+pub fn get_website(
+    Path(id): Path<String>, 
+    Data(s): Data<&Arc<Mutex<Store>>>
+) -> Json<GetWebsiteOutput> {
     let mut locked_s = s.lock().unwrap();
     let website = locked_s.get_website(id).unwrap();
 
     Json(GetWebsiteOutput{
         url: website.url
     })
-
-
 }
 
 #[handler]
-pub fn create_website(Json(data): Json<CreateWebsiteInput>, Data(s): Data<&Arc<Mutex<Store>>>) -> Json<CreateWebsiteOutput> {
+pub fn create_website(
+    Json(data): Json<CreateWebsiteInput>, 
+    Data(s): Data<&Arc<Mutex<Store>>>
+) -> Json<CreateWebsiteOutput> {
     let mut locked_s = s.lock().unwrap();
 
     let website = locked_s.create_website(String::from("c870fd51-d0e3-427b-9aa9-2be8c9170a70"), data.url).unwrap();
@@ -33,5 +37,4 @@ pub fn create_website(Json(data): Json<CreateWebsiteInput>, Data(s): Data<&Arc<M
     };
 
     Json(response)
-
 }

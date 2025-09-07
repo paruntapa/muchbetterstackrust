@@ -14,7 +14,11 @@ pub mod request_outputs;
 
 #[tokio::main(flavor = "multi_thread")]
 async fn main() -> Result<(), std::io::Error> {
-    let s = Arc::new(Mutex::new(Store::new().unwrap()));
+    let s = Arc::new(
+        Mutex::new(
+            Store::new().unwrap()
+        )
+    );
     //Specify App
     let app= Route::new()
     .at("/website/:website_id", get(get_website))

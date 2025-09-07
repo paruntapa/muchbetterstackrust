@@ -9,6 +9,7 @@ pub struct Config {
 impl Default for Config {
     fn default() -> Self {
         dotenv().ok();
+        
         let db_url = env::var("DATABASE_URL")
         .unwrap_or_else(|_| panic!("Please set the DATABASE_URL environment variable bhrata shree"));
 

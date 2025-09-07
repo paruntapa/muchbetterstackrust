@@ -13,7 +13,12 @@ struct User {
 }
 
 impl Store {
-    pub fn sign_up(&mut self, username: String, password: String) -> Result<String, diesel::result::Error>{
+    pub fn sign_up(
+        &mut self, 
+        username: String, 
+        password: String
+    ) -> Result<String, diesel::result::Error> {
+
         let u = User{
             username,
             password,
@@ -28,7 +33,11 @@ impl Store {
         Ok(u.id)
     }
 
-    pub fn sign_in(&mut self, input_username: String, input_password: String) -> Result<bool, diesel::result::Error>{
+    pub fn sign_in(
+        &mut self, 
+        input_username: String, 
+        input_password: String
+    ) -> Result<bool, diesel::result::Error> {
         use crate::schema::user::dsl::*;
 
         let user_result = user

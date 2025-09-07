@@ -15,7 +15,11 @@ pub struct Website {
 }
 
 impl Store{
-    pub fn create_website(&mut self, user_id: String, url: String) -> Result<Website, diesel::result::Error>{
+    pub fn create_website(
+        &mut self, 
+        user_id: String, 
+        url: String
+    ) -> Result<Website, diesel::result::Error> {
         let id = Uuid::new_v4();
         let website = Website {
             id: id.to_string(),
@@ -32,7 +36,10 @@ impl Store{
     Ok(website)
     }
 
-    pub fn get_website(&mut self, input_id: String) -> Result<Website, diesel::result::Error>{
+    pub fn get_website(
+        &mut self, 
+        input_id: String
+    ) -> Result<Website, diesel::result::Error> {
         use crate::schema::website::dsl::*;
 
         let resulting_website = website
