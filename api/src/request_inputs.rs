@@ -11,3 +11,8 @@ pub struct CreateUserInput {
     pub username: String,
     pub password: String
 }
+
+#[derive(Clone)]
+pub struct PgConn {
+    pub conn: String
+}
