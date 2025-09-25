@@ -1,4 +1,5 @@
 use std::sync::{Arc, Mutex};
+use std::env;
 
 use jsonwebtoken::{EncodingKey, Header, encode};
 use poem::{Error, handler, http::StatusCode, web::{Data, Json}};
@@ -41,6 +42,8 @@ pub fn sign_in(
     Data(s): Data<&Arc<Mutex<Store>>>
     
 ) -> Result<Json<SignInOutput>, Error>{
+    dotenv::dotenv().ok();
+    let secret = env::var("JWT_SECRET").expect("Set JWT Env");
     let mut locked_s = s
     .lock()
     .unwrap();
@@ -56,7 +59,7 @@ pub fn sign_in(
                 exp: 111111111111111111
             };
 
-            let token = encode(&Header::default(), &my_claims, &EncodingKey::from_secret("secret".as_ref()))
+            let token = encode(&Header::default(), &my_claims, &EncodingKey::from_secret(secret.as_ref()))
             .map_err(|_| Error::from_status(StatusCode::UNAUTHORIZED))?;
 
             let response = SignInOutput {
