@@ -9,7 +9,9 @@ impl<'a> FromRequest<'a> for UserId {
     async fn from_request(
             req: &'a Request,
             __body: &mut RequestBody,
+            
         ) -> Result<Self> {
+
             let token = req
             .headers()
             .get("My token")
