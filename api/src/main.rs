@@ -11,6 +11,7 @@ use crate::routes::{user::{sign_in, sign_up}, website::{create_website, get_webs
 pub mod routes;
 pub mod request_inputs;
 pub mod request_outputs;
+pub mod auth_middleware;
 
 #[tokio::main(flavor = "multi_thread")]
 async fn main() -> Result<(), std::io::Error> {
