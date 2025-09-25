@@ -7,7 +7,7 @@ pub struct CreateWebsiteOutput {
 
 #[derive(Serialize, Deserialize)]
 pub struct CreateUserOutput {
-    pub id: String
+    pub id: String 
 }
 
 

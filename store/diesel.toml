@@ -6,4 +6,4 @@ file = "src/schema.rs"
 custom_type_derives = ["diesel::query_builder::QueryId", "Clone"]
 
 [migrations_directory]
-dir = "/home/zactel/Documents/khodin/projects/11.muchbetterstackrust/api/store/migrations"
+dir = "/home/zactel/Documents/Khodin/projects/11.muchbetterstackrust/store/migrations"

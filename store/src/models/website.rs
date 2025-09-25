@@ -10,7 +10,7 @@ use uuid::Uuid;
 pub struct Website {
     pub id: String,
     pub url: String,
-    pub user_id: String,
+    pub user_id: Option<String>,
     pub time_added: chrono::NaiveDateTime
 }
 
@@ -24,7 +24,7 @@ impl Store{
         let website = Website {
             id: id.to_string(),
             url: url,
-            user_id: user_id,
+            user_id: Option::Some(user_id),
             time_added: Utc::now().naive_utc()
         };
 
